@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api/events'
+const API_BASE = (import.meta.env.VITE_API_URL || '/api') + '/events'
 
 export async function getEvents(token) {
   const res = await fetch(API_BASE, {
