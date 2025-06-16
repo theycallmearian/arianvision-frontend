@@ -59,11 +59,11 @@ export function renderCreateEventForm(container, onSuccess) {
       showLoader(form)
       btnCreate.disabled = true
 
-      const response = await fetch('http://localhost:3000/api/events', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        body: formData
-      })
+  const response = await fetch(`${BASE_URL}/events`, {
+  method: 'POST',
+  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  body: formData
+})
 
       const rawText = await response.text()
       console.log('[CREATE EVENT] raw response:', rawText)
