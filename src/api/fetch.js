@@ -1,4 +1,4 @@
-const BASE_URL = '/api'
+const BASE_URL = import.meta.env.VITE_API_URL || '/api'
 
 async function apiRequest(
   endpoint,
@@ -26,7 +26,9 @@ async function apiRequest(
     init.body = body instanceof FormData ? body : JSON.stringify(body)
   }
 
-  const res = await fetch(`${BASE_URL}${endpoint}`, init)
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`
+
+  const res = await fetch(`${BASE_URL}${cleanEndpoint}`, init)
   const data = await res.json()
   if (!res.ok) {
     throw new Error(data.message || 'Error en la petición a la API')
