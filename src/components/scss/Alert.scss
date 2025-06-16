@@ -1,0 +1,66 @@
+.alert-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.alert-dialog {
+  max-width: 90%;
+  width: 320px;
+  padding: var(--padding-m);
+  border-radius: 0.75rem;
+  background: var(--dark-bg);
+  color: var(--walterwhite);
+  text-align: center;
+  box-shadow: 0 8px 24px var(--transparent);
+  animation: fadeInScale 0.2s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.alert-dialog.success {
+  border-top: 4px solid var(--sucess-ok);
+}
+.alert-dialog.error {
+  border-top: 4px solid var(--error);
+}
+.alert-dialog.warning {
+  border-top: 4px solid var(--warning);
+}
+.alert-dialog.info {
+  border-top: 4px solid var(--info);
+}
+
+.alert-message {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+.alert-ok {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--walterwhite);
+  transition: background 0.2s;
+}
+
+.alert-ok:hover {
+  background: rgba(255, 255, 255, 0.25);
+}

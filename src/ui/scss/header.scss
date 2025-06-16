@@ -1,0 +1,46 @@
+.main-header {
+  display: flex;
+  padding: 1rem 1.5rem;
+  justify-content: space-between;
+  background: var(--dark-bg);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 3rem;
+      filter: invert(100%);
+    }
+  }
+
+  .user-controls {
+    display: flex;
+    align-items: center;
+
+    .user-name {
+      color: var(--primary-color);
+      margin-right: 1rem;
+      font-weight: 500;
+    }
+
+    button {
+      background: none;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+
+      &:hover {
+        background: var(--primary-color);
+        color: var(--dark-bg);
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+@import '../ui/scss/header.scss';
+@import '../ui/scss/footer.scss';
+@import '../events/scss/eventList.scss';
+@import '../events/scss/Card.scss';
+@import '../events/scss/eventsForm.scss';
+@import '../components/scss/Alert.scss';
+@import '../events/scss/editEventForm.scss';
+@import '../components/scss/Button.scss';
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,600;1,600&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,600;1,600&family=Rubik+Glitch&family=Zen+Tokyo+Zoo&display=swap');
+
+:root {
+  /* COLORS */
+  --primary-color: #0ef;
+  --secondary-color: #2c4766;
+  --third-color: #00b2e3;
+  --light-blue: #d1dbe7;
+  --walterwhite: #ffffff;
+
+  /* ALERTS COLORS */
+  --sucess-ok: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+
+  /* BTN COLORS */
+
+  --join: #3194fdf6;
+  --leave: #0056b3;
+  --edit: #ffc107;
+  --editfont: #212529;
+  --delete: #dc3545;
+  --full: #6c757d;
+  --submit: #00c3ff;
+  --cancel: #e11d48;
+
+  /* BACKGROUNDS */
+
+  --transparent: rgba(0, 0, 0, 0.5);
+  --dark-bg: #1f293a;
+
+  /* PADDING */
+  --padding-s: 0.5rem;
+  --padding-m: 1.5rem;
+  --padding-l: 2em;
+  --padding-xl: 3em;
+  --padding-xxl: 4em;
+  --padding-xxxl: 10em;
+
+  /* MARGIN */
+  --margin-s: 0.5rem;
+  --margin-sm: 1rem;
+  --margin-m: 1em;
+  --margin-l: 2rem;
+  --margin-xl: 3em;
+  --margin-xxl: 5rem;
+  --margin-xxxl: 10em;
+
+  /* GAP */
+
+  --gap-s: 0.5em;
+  --gap-m: 1em;
+  --gap-l: 2.5rem;
+  --gap-xl: 3em;
+  --gap-xxl: 4em;
+  --gap-xxxl: 10em;
+
+  /* FONT SIZE */
+  --font-s: 0.5em;
+  --font-m: 1em;
+  --font-l: 1.5em;
+  --font-xl: 3em;
+  --font-xxl: 4em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+.background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-slideshow .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: slideAnimation 30s infinite;
+}
+
+.background-slideshow .slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.background-slideshow .slide:nth-child(2) {
+  animation-delay: 10s;
+}
+.background-slideshow .slide:nth-child(3) {
+  animation-delay: 20s;
+}
+
+@keyframes slideAnimation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 160px);
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 5rem;
+}
+
+h2 {
+  font-family: 'Zen Tokyo Zoo', system-ui;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  color: #0ef;
+  text-align: center;
+  font-size: 3.5em;
+}

@@ -1,0 +1,43 @@
+.landing-container {
+  text-align: center;
+  background: var(--transparent);
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.landing-logo {
+  display: block;
+  width: 30em;
+  margin: 0 auto 3rem;
+  filter: brightness(0) invert(1);
+  animation: heartbeat 5.5s ease-in-out infinite;
+}
+
+.landing-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--gap-l);
+  margin-bottom: var(--margin-l);
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+}
