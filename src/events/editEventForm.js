@@ -2,6 +2,8 @@ import { escapeHtml, formatDateForInput } from '../utils/helpers.js'
 import { showAlert, clearAlert } from '../components/Alert.js'
 import { showLoader, hideLoader } from '../utils/loader.js'
 
+const BASE_URL = import.meta.env.VITE_API_URL || '/api'
+
 export function renderEditEventForm(containerEl, eventData, token, onSuccess) {
   containerEl.innerHTML = `
     <div class="edit-form-wrapper visible">
@@ -67,7 +69,7 @@ export function renderEditEventForm(containerEl, eventData, token, onSuccess) {
     try {
       showLoader(form)
       const response = await fetch(
-        `http://localhost:3000/api/events/${eventData._id}`,
+        `${BASE_URL}/events/${eventData._id}`,
         {
           method: 'PUT',
           headers: { Authorization: `Bearer ${token}` },
