@@ -61,4 +61,3 @@ Frontend de la plataforma ArianVision para la gestión y visualización de event
 
 ---
 
-¿Dudas? Contacta al autor o revisa el repo del backend para detalles extra.
