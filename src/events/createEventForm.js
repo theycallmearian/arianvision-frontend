@@ -1,5 +1,6 @@
 import { showLoader, hideLoader } from '../utils/loader.js'
 import { showAlert, clearAlert } from '../components/Alert.js'
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 export function renderCreateEventForm(container, onSuccess) {
   container.innerHTML = `
@@ -59,11 +60,11 @@ export function renderCreateEventForm(container, onSuccess) {
       showLoader(form)
       btnCreate.disabled = true
 
-  const response = await fetch(`${BASE_URL}/events`, {
+const response = await fetch(`${BASE_URL}/events`, {
   method: 'POST',
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
   body: formData
-})
+});
 
       const rawText = await response.text()
       console.log('[CREATE EVENT] raw response:', rawText)
