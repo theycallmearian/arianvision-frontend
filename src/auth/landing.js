@@ -28,7 +28,9 @@ export function renderLanding(container) {
     window.location.hash = '#events'
     window.location.reload()
   })
+
   btnLogin.addEventListener('click', () => {
+    window.location.hash = '#login'
     import('./loginForm.js').then((m) => m.renderLoginForm(container))
   })
 }

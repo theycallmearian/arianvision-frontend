@@ -36,6 +36,7 @@ export function renderLoginForm(container) {
       <div id="login-error" class="error-box"></div>
     </div>
   `
+
   const form = document.getElementById('login-form')
   const switchLink = document.getElementById('switch-to-register')
   const loaderContainer = document.getElementById('login-loader')
@@ -50,17 +51,17 @@ export function renderLoginForm(container) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
     errorBox.textContent = ''
+    loaderContainer.style.display = 'flex'
+    form.querySelector('.btn.login-fx').disabled = true
 
     const email = form.email.value.trim()
     const password = form.password.value
-
-    loaderContainer.style.display = 'flex'
-    form.querySelector('.btn.login-fx').disabled = true
 
     try {
       const { user, token } = await loginUser(email, password)
       localStorage.setItem('token', token)
       localStorage.setItem('user', JSON.stringify(user))
+      window.location.hash = '#events'
       window.location.reload()
     } catch (err) {
       errorBox.textContent = err.message || '❌ Error al iniciar sesión'

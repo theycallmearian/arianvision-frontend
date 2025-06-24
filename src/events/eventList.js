@@ -4,6 +4,7 @@ import { createEventCard } from './eventCard.js'
 import { renderCreateEventForm } from './createEventForm.js'
 import { showLoader, hideLoader } from '../utils/loader.js'
 import { showError, clearError } from '../utils/errorHandler.js'
+import { normalizeText } from '../utils/stringUtils.js'
 
 export async function renderEventList(container) {
   container.innerHTML = listContainer()
@@ -76,12 +77,14 @@ export async function renderEventList(container) {
 
     const searchInput = container.querySelector('#event-search')
     searchInput.addEventListener('input', () => {
-      const term = searchInput.value.toLowerCase()
-      const filtered = allEvents.filter(
-        (ev) =>
-          ev.title.toLowerCase().includes(term) ||
-          ev.description.toLowerCase().includes(term)
-      )
+      const term = normalizeText(searchInput.value)
+      const filtered = allEvents.filter((ev) => {
+        return (
+          normalizeText(ev.title).includes(term) ||
+          normalizeText(ev.description).includes(term)
+        )
+      })
+
       eventsListEl.innerHTML = ''
       filtered.forEach((ev) => {
         const card = createEventCard(ev, token, user, refresh)

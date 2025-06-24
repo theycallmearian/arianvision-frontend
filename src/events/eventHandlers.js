@@ -111,6 +111,7 @@ export function attachCardListeners(cardEl, token, user, refreshList) {
             'success',
             'Te has desinscrito correctamente.'
           )
+          if (typeof refreshList === 'function') refreshList()
           setTimeout(() => clearAlert(alertContainer), 1500)
         })
         .catch((err) => {

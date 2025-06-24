@@ -1,4 +1,5 @@
 import { registerUser } from '../api/fetch.js'
+import { isValidEmail, isValidPassword } from '../utils/validators.js'
 import { renderLoginForm } from './loginForm.js'
 import './scss/loginForm.scss'
 
@@ -53,26 +54,39 @@ export function renderRegisterForm(container) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
     messageDiv.textContent = ''
+    messageDiv.className = 'error-box'
 
     const name = form.name.value.trim()
     const email = form.email.value.trim()
     const password = form.password.value
     const confirmPassword = form['confirm-password'].value
 
+    if (!isValidEmail(email)) {
+      messageDiv.textContent = '⚠️ Formato de correo no válido.'
+      return
+    }
     if (password !== confirmPassword) {
       messageDiv.textContent = '⚠️ Las contraseñas no coinciden.'
       return
     }
+    if (!isValidPassword(password)) {
+      messageDiv.textContent =
+        '⚠️ La contraseña debe tener mínimo 8 caracteres, incluir un número y un carácter especial.'
+      return
+    }
 
     try {
-      const { user, token } = await registerUser({
+      const { token, user } = await registerUser({
         name,
         email,
         password,
         role: 'user'
       })
+
       localStorage.setItem('token', token)
       localStorage.setItem('user', JSON.stringify(user))
+
+      window.location.hash = '#events'
       window.location.reload()
     } catch (err) {
       messageDiv.textContent = err.message || '❌ Error al registrarse'

@@ -31,3 +31,9 @@
   justify-content: space-around;
   gap: 1rem;
 }
+
+button,
+input,
+.event-card {
+  transition: padding 0.2s, font-size 0.2s;
+}

@@ -1,5 +1,6 @@
 @import '../ui/scss/header.scss';
 @import '../ui/scss/footer.scss';
+@import '../ui/scss/errorBox.scss';
 @import '../events/scss/eventList.scss';
 @import '../events/scss/Card.scss';
 @import '../events/scss/eventsForm.scss';
@@ -98,6 +99,18 @@ body {
   overflow: hidden;
 }
 
+.background-slideshow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .background-slideshow .slide {
   position: absolute;
   width: 100%;
@@ -153,4 +166,39 @@ h2 {
   color: #0ef;
   text-align: center;
   font-size: 3.5em;
+}
+
+@media (max-width: 768px) {
+  .main-header .user-controls button {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+
+  .login-box {
+    padding: 20px !important;
+  }
+  .input-box {
+    margin: 15px 0;
+  }
+  .login-fx {
+    width: 10em;
+    height: 3em;
+  }
+
+  #events-list {
+    grid-template-columns: 1fr !important;
+    justify-content: center;
+  }
+  .card {
+    width: 100% !important;
+    max-width: 400px;
+  }
+  .card .front-title {
+    font-size: 1.3rem;
+  }
+
+  .main-footer {
+    font-size: 1rem;
+    padding: 1rem;
+  }
 }

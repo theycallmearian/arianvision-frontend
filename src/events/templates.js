@@ -1,7 +1,7 @@
 export function listContainer() {
   return `
     <section class="event-section">
-      <h2>Eventos disponibles</h2>
+      <h2 class="section-title">Eventos disponibles</h2>
       <div id="toggle-create-wrapper"></div>
       <div id="event-form-container"></div>
       <div id="events-alert" class="alert-container"></div>

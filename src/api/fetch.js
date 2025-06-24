@@ -16,22 +16,29 @@ async function apiRequest(
   }
 
   if (token) {
-    init.headers = {
-      ...init.headers,
-      Authorization: `Bearer ${token}`
-    }
+    init.headers.Authorization = `Bearer ${token}`
   }
-
-  if (body) {
+  if (body != null) {
     init.body = body instanceof FormData ? body : JSON.stringify(body)
   }
 
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`
-
   const res = await fetch(`${BASE_URL}${cleanEndpoint}`, init)
-  const data = await res.json()
+
+  if (res.status === 204) {
+    return {}
+  }
+
+  const text = await res.text()
+  let data
+  try {
+    data = JSON.parse(text)
+  } catch {
+    throw new Error(`Respuesta no JSON: ${text.slice(0, 200)}`)
+  }
+
   if (!res.ok) {
-    throw new Error(data.message || 'Error en la petición a la API')
+    throw new Error(data.message || res.statusText)
   }
   return data
 }
@@ -51,25 +58,19 @@ export function registerUser(payload) {
 }
 
 export function getAllEvents() {
-  return apiRequest('/events', { method: 'GET' })
+  return apiRequest('/events')
 }
 
 export function getEventById(id) {
-  return apiRequest(`/events/${id}`, { method: 'GET' })
+  return apiRequest(`/events/${id}`)
 }
 
 export function createEvent(formData) {
-  return apiRequest('/events', {
-    method: 'POST',
-    body: formData
-  })
+  return apiRequest('/events', { method: 'POST', body: formData })
 }
 
 export function updateEvent(id, payload) {
-  return apiRequest(`/events/${id}`, {
-    method: 'PUT',
-    body: payload
-  })
+  return apiRequest(`/events/${id}`, { method: 'PUT', body: payload })
 }
 
 export function joinEvent(id) {
@@ -83,3 +84,17 @@ export function leaveEvent(id) {
 export function deleteEvent(id) {
   return apiRequest(`/events/${id}`, { method: 'DELETE' })
 }
+
+export function getUserEvents() {
+  return apiRequest('/users/me/events')
+}
+
+export function updateUser(data) {
+  return apiRequest('/users/me', { method: 'PUT', body: data })
+}
+
+export function deleteUser() {
+  return apiRequest('/users/me', { method: 'DELETE' })
+}
+
+export { apiRequest }

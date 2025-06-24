@@ -37,10 +37,36 @@
       cursor: pointer;
       transition: background 0.3s, color 0.3s;
 
-      &:hover {
+      &:hover,
+      &.active {
         background: var(--primary-color);
         color: var(--dark-bg);
       }
     }
+  }
+}
+
+.user-controls button .icon {
+  display: none;
+}
+.user-controls button .label {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .user-name {
+    display: none;
+  }
+
+  .user-controls button .label {
+    display: none;
+  }
+  .user-controls button .icon {
+    display: inline;
+    font-size: 1.2rem;
+  }
+  .user-controls button {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9rem;
   }
 }
