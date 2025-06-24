@@ -199,3 +199,14 @@ h4 {
   font-size: var(--font-l);
   text-transform: uppercase;
 }
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+  }
+
+  .container span {
+    display: none;
+  }
+}
+
