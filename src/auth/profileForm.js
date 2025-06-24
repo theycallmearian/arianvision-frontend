@@ -1,5 +1,5 @@
 import { updateUser, deleteUser } from '../api/fetch.js'
-import { apiRequest } from '../api/fetch.js' // <- Asegúrate de exportar apiRequest en fetch.js
+import { apiRequest } from '../api/fetch.js'
 import { isValidPassword, isValidEmail } from '../utils/validators.js'
 import { confirmDialog } from '../utils/confirmDialog.js'
 import { renderLanding } from './landing.js'

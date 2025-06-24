@@ -1,5 +1,3 @@
-// src/main.js
-
 import './src/styles/main.scss'
 import './src/ui/scss/ui.scss'
 
