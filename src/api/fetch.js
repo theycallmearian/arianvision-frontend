@@ -23,7 +23,13 @@ async function apiRequest(
   }
 
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`
-  const res = await fetch(`${BASE_URL}${cleanEndpoint}`, init)
+
+  let res
+  try {
+    res = await fetch(`${BASE_URL}${cleanEndpoint}`, init)
+  } catch (error) {
+    throw new Error('No se pudo conectar con el servidor. Inténtalo más tarde.')
+  }
 
   if (res.status === 204) {
     return {}
